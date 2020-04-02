@@ -1,0 +1,10 @@
+Dim Str, ChkDup,i,Cnt
+Str="aaabc"
+For i = 1 to Len(Str) step 1
+ChkDup=mid(Str,i,1)
+Cnt = split(Str,ChkDup,-1)
+result= Ubound(Cnt)
+result1=result1&result
+Next
+
+MsgBox result1

@@ -1,0 +1,22 @@
+Sub Sort(Ar)
+Cnt = UBound(Ar)
+For i = 0 To Cnt-1
+For j = 0 To Cnt-1-i
+If Ar(j+1) < Ar(j) Then
+tmp = Ar(j)
+Ar(j) = Ar(j+1)
+Ar(j+1) = tmp
+End If
+Next
+Next
+End Sub
+
+Ar = Array(5,3,2,4,1)
+
+Call Sort(Ar)
+
+MsgBox Ar(0)
+MsgBox Ar(1)
+MsgBox Ar(2)
+MsgBox Ar(3)
+MsgBox Ar(4)

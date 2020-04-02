@@ -1,0 +1,9 @@
+dim a,b
+str = inputbox("enter the string:")
+
+For n = len(str) to 1 step- 1
+b=Mid(str,n,1)
+a = a+b
+
+Next
+Msgbox ("the string is"&a)
