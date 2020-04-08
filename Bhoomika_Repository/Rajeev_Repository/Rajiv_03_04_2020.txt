@@ -1,0 +1,17 @@
+Hi Bhoomika
+
+Please find below my status.
+
+VB Script
+Excel Object Model
+Reading excel document
+Writing to excel document
+Workbook and add sheet
+UFT
+
+Gone through Object Spy
+GetROProperty
+GetTOProperty
+SetTOProperty
+Reference
+https://synechron.udemy.com/course/hp-uft-120-automation

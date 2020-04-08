@@ -1,0 +1,26 @@
+1. Work on Fire event.
+
+Fire Event is Basically used when we want to trigger any specific event on an object
+below is the list of Valid events
+
+onchange
+onclick
+ondblclick
+onblur
+onfocus
+onmousedown
+onmouseup
+onmouseover
+onmouseout
+onsubmit
+onreset
+onpropertychange
+
+
+Example
+
+Browser("ABC").Page("XYZ").WebButton("Button1").Click
+
+So here we need to use FireEvent method as below
+
+Browser("ABC").Page("XYZ").WebButton("Button1").FireEvent “ondblclick”

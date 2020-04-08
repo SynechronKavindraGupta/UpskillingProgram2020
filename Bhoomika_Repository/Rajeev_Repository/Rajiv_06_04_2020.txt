@@ -1,0 +1,60 @@
+1. Load function library at run time
+i. LoadFunctionLibrary (Path of the functional library) 
+
+Dim lib
+‘Taking value of any Environment from Data table or external database
+lib= DataTable(“Enviornment”,1)
+
+‘Based on the environment concerned library will be loaded at runtime
+If lib=“Library” Then
+    LoadFunctionLibrary(“C: Path1”)
+Else
+    LoadFunctionLibrary(“C: Path2”)
+End If
+
+ii. with Framework
+
+1) By using ‘File > Settings > Resources > Associate Function Library’ option in QTP.
+2) By using Automation Object Model (AOM).
+3) By using ExecuteFile method.
+4) using LoadFunctionLibrary method.
+
+2. Load OR at run time
+
+i. when u write below syntax 
+
+Syntax: RepositoriesCollection.Add(Path) 
+
+Edit Menu-->Action-->Action Properties-->Associate
+Repository tab) at runtime.
+
+ii. Add the object repository at runtime
+
+Dim qtAppn
+Dim qtObjRes
+
+Set qtAppn = CreateObject("QuickTest.Application")
+qtAppn.Launch
+qtAppn.Visible = True
+
+qtApp.Open "E:\Test\Path", False, False
+Set qtObjRes = qtApp.Test.Actions
+("Login").ObjectRepositories
+
+qtObjRes.Add "E:\OR\Path", 1
+
+3. Read the text of any lable
+
+
+Browser("BrowserName").Page("PageName").Frame("FrameName").WebEdit("TextBoxName").GetROProperty("disabled",1)=false
+
+
+4. Merge 2 object repository
+
+i. Resources-->Object Repository Manager-->Tools--
+>O.Repository Merge Tool.
+ii. export local objects to .tsr file.
+iii. Two or more than files can be merge with O.R merge tool
+in O.R.manager tool.
+iv. after that you have to associate actions to merge files.
+v. after that merging u will get Shared repositories files..

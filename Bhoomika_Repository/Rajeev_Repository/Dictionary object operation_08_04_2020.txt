@@ -1,0 +1,37 @@
+1. Dictionary object operation?
+
+Dim DicObj
+Set DicObj=CreateObject("Scripting.Dictionary")
+
+DicObj.Add "Name", "Test"
+DicObj.Add "Country","India"
+MsgBox DicObj.Item("Country")
+MsgBox DicObj.Item("Name")
+
+
+If DicObj.Exists("Name") then
+MsgBox "Key Exists"
+End If
+
+DicObj.Add "Name", "Test1"
+DicObj.Add "Country","England"
+I = DicObj.Items
+MsgBox I(1)
+
+DicObj.Add "Name", "Test2"
+DicObj.Add "Country", "Sweden"
+K = DicObj.Keys
+MsgBox K(1)
+
+
+DicObj.Add "Name", "Test3"
+DicObj.Add "Country", "Greece"
+DicObj.Remove("Country")
+MsgBox DicObj.Item("Country")
+
+
+DicObj.Add "Name", "Test4"
+DicObj.Add "Country", "Australia"
+DicObj.RemoveAll
+MsgBox DicObj.Item("Country")
+

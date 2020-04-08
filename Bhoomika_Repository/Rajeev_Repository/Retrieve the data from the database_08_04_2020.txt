@@ -1,0 +1,21 @@
+3. Retrieve the data from the database and store in file
+
+
+Set objConnection = CreateObject("ADODB.Connection")
+ 
+Set objRecordSet = CreateObject("ADODB.Recordset")
+ 
+objConnection.open "provider=" ";Server=" ";User Id=" "; Password=" "; Database=" ";Trusted_Connection=Yes"
+ 
+sqlQuery="Select * from emp"
+ 
+objRecordSet.open sqlQuery, objConnection
+ 
+value = objRecordSet.fields.item(0)               
+msgbox Value
+ 
+ 
+objRecordSet.Close
+objConnection.Close
+Set objConnection = Nothing
+Set objRecordSet = Nothing

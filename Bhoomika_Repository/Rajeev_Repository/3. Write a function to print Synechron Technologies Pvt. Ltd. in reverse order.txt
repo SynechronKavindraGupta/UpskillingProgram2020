@@ -1,0 +1,30 @@
+Write a function to print "Synechron Technologies Pvt. Ltd." in reverse order ?
+
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+Str="Synechron Technologies Pvt. Ltd."
+
+For i=Len(Str) to 1 Step-1
+
+    var=Mid(Str,i,1)
+
+    reverseStr=reverseStr & var
+
+Next
+ 
+Msgbox reverseString
+
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+
+Dim s
+
+s = StrReverse("Synechron Technologies Pvt. Ltd.")
+
+
+
+

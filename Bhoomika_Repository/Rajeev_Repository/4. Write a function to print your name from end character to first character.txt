@@ -1,0 +1,22 @@
+Write a function to print your name from end character to first character ?
+
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+Str=inputbox("Enter your name")
+
+For i=Len(Str) to 1 Step-1
+
+    var=Mid(Str,i,1)
+
+    reverseStr=reverseStr & var
+
+Next
+ 
+Msgbox reverseString
+
+
+
+
+

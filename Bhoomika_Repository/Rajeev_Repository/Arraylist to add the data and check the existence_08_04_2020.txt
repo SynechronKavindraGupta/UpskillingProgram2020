@@ -1,0 +1,12 @@
+2. Arraylist to add the data and check the existence of the data? database concept?
+
+Set list = CreateObject("System.Collections.ArrayList")
+list.Add 23
+list.Add 56
+list.Add 128
+list.Add 567
+
+If list.Contains(myData) Then
+  'do stuff
+End If
+

@@ -1,0 +1,34 @@
+Write a function to create a Dictionary Object and add all Calender months to it ?
+
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+Dim obj_datadict  
+
+Set obj_datadict = CreateObject("Scripting.Dictionary")
+         
+obj_datadict.Add "1st", "January"  
+
+obj_datadict.Add "2nd", "February"
+
+obj_datadict.Add "3rd", "March"
+
+obj_datadict.Add "4th", "April"  
+
+obj_datadict.Add "5th", "May"
+
+obj_datadict.Add "6th", "June"
+
+obj_datadict.Add "7th", "July"  
+
+obj_datadict.Add "8th", "August"
+
+obj_datadict.Add "9th", "September"
+
+obj_datadict.Add "10th", "October"  
+
+obj_datadict.Add "11th", "November"
+
+obj_datadict.Add "12th", "December"
+
