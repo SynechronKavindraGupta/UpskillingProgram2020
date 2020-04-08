@@ -1,0 +1,38 @@
+Load OR at runtime:
+
+executefile "C:\Documents and Settings\guru\Desktop\Sample123.vbs"
+ x=50
+ y=50
+ result=Sum(x,y)
+ msgbox(result)
+
+
+ 'Code in External Library file(.vbs file).
+ Public function Sum(a,b)
+ Dim sum
+ sum=a+b
+ Sum=sum
+ End Function
+
+rowcount:
+strpath="excel path"
+
+Set xlApp=Createobject("Excel.Application")
+xlApp.DisplayAlerts=False
+
+set xlWb=xlApp.WorkBooks.Open(strpath)
+
+set sht1 = xlWb.Sheets(1)
+
+intRowCount =sht1.UsedRange.Rows.Count
+
+MsgBox intRowCount
+
+to read from excel:
+
+Datatable.import "excel path"
+Datatable.setcurrentRow(1)
+Row1=  Datatable.Value("Name",1)
+DataTable.SetCurrentRow(2)
+Row2=  Datatable.Value("Name",1)
+MsgBox("Name Row 1 =" & Row1 &  "  Name Row 2 =" & Row2  )
