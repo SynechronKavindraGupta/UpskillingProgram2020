@@ -1,0 +1,399 @@
+
+
+1. Write a function to open IE, maximize it and migrate to eag portal and verify login with valid user credentials ?
+--------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------- 
+
+	Function fnValidateLoginCredentialsEAG()
+
+
+	
+	Dim mode_Maximized
+
+	mode_Maximized = 3 
+
+
+
+	SystemUtil.Run "iexplore.exe", "https://eag.synechron.com",3
+
+
+	
+	browser("micclass:=browser").page("micclass:=page").WebEdit("name:=Username").Set "xyz@synechron.com"
+	
+browser("micclass:=browser").page("micclass:=page").WebEdit("name:=Password").SetSecure "vjx3yvxfheyev"
+
+	browser("micclass:=browser").page("micclass:=page").WebButton("name:=Sign in").Click
+
+
+
+	If browser("micclass:=browser").page("micclass:=page").WebElement("name:=logout").exist(5) Then
+	Msgbox "Login is success"
+	else
+	Msgbox "Login is failed"
+	End If	
+
+	End Function
+
+-----------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+  	
+
+2. Write a function to print all the values of all the list dropdown on "https://book.spicejet.com/" and book the tickets from Bangalore to Pune of 2 
+days later from todays system date ?
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+SystemUtil.Run "C:\Program Files\Internet Explorer\iexplore.exe"
+Browser("Browser").Page("Page").Sync
+Browser("Browser").Navigate "https://book.spicejet.com/"
+Browser("Browser").Page("Welcome: SpiceJet").WebEdit("User Name").Set "Test"
+Browser("Browser").Page("Welcome: SpiceJet").WebEdit("Password").SetSecure "XXXXXXXXXXXXXXXX"
+Browser("Browser").Page("Welcome: SpiceJet").Image("Sign-In").Click 17,4
+Browser("Browser").Page("Find a Flight: SpiceJet").WebRadioGroup("tripType").Select "Oneway"
+Browser("Browser").Page("Find a Flight: SpiceJet").WebList("passCount").Select "2"
+Browser("Browser").Page("Find a Flight: SpiceJet").WebList("fromPort").Select "Banagluru"
+Browser("Browser").Page("Find a Flight: SpiceJet").WebList("fromMonth").Select "April"
+Browser("Browser").Page("Find a Flight: SpiceJet").WebList("fromDay").Select "9"
+Browser("Browser").Page("Find a Flight: SpiceJet").WebList("toPort").Select "Pune"
+Browser("Browser").Page("Find a Flight: SpiceJet").WebList("toMonth").Select "April"
+Browser("Browser").Page("Find a Flight: SpiceJet").WebList("toDay").Select "10"
+Browser("Browser").Page("Find a Flight: SpiceJet").WebRadioGroup("servClass").Select "Business"
+Browser("Browser").Page("Find a Flight: SpiceJet").Image("findFlights").Click 36,8
+Browser("Browser").Page("Select a Flight: SpiceJet").WebList("airline").Select "G8 283"
+Browser("Browser").Page("Select a Flight: SpiceJet").Image("reserveFlights").Click 40,5
+Browser("Browser").Page("Book a Flight: SpiceJet").Link("SIGN-OFF").Click
+Browser("Browser").Page("Sign-on: SpiceJet").Sync
+Browser("Browser").CloseAllTabs
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3. Write a function to print "Synechron Technologies Pvt. Ltd." in reverse order without using StrRverse method.? 
+OutPut expexted is "Ltd. Pvt. Technologies Synechron"
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+
+str=""Synechron Technologies Pvt. Ltd.""
+
+x=split(str,"" "")
+
+For i = 0 to UBound(x)
+
+ sRev = StrReverse(x(i))
+
+ expStr = expStr & sRev & "" "" 
+ 
+Next
+
+
+MsgBox expStr"
+
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+
+4. Write a function to print your name from end character to first character. Ex: "Synechron Tech" should be printed as "hceT norhcenyS" ?
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+Str=inputbox("Enter your name")
+
+For i=Len(Str) to 1 Step-1
+
+    var=Mid(Str,i,1)
+
+    reverseStr=reverseStr & var
+
+Next
+ 
+Msgbox reverseString
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+ 
+5. Write a function to create a Dictionary Object using vbScript and add all months to it ex,  Jan, Feb, March, Apr, .., Nov, Dec.?
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+Dim obj_datadict  
+
+Set obj_datadict = CreateObject("Scripting.Dictionary")
+         
+obj_datadict.Add "1st", "January"  
+
+obj_datadict.Add "2nd", "February"
+
+obj_datadict.Add "3rd", "March"
+
+obj_datadict.Add "4th", "April"  
+
+obj_datadict.Add "5th", "May"
+
+obj_datadict.Add "6th", "June"
+
+obj_datadict.Add "7th", "July"  
+
+obj_datadict.Add "8th", "August"
+
+obj_datadict.Add "9th", "September"
+
+obj_datadict.Add "10th", "October"  
+
+obj_datadict.Add "11th", "November"
+
+obj_datadict.Add "12th", "December"
+
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------  
+
+
+
+6. Write a program to check if ALM is open or not from number of already opened browsers in IE ?
+
+
+
+7. Write a program to print the digits, characters and special characters from the string "$yn3chr0n in @pr1L 03, 2020 year! " ?
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------  
+Dim str,strlen,strstart
+Dim temp
+Dim numeric, strChar, splChar
+
+str="$yn3chr0n in @pr1L 03, 2020 year!"
+
+strlen=Len(str)
+
+For strstart=1 to strlen
+ temp=Mid(str,strstart,1)
+
+ If IsNumeric(temp) Then 
+  numeric=numeric+temp
+
+ Elseif ASC(temp)>64 and ASC(temp)<123 Then
+  strChar=strChar+temp
+
+ Else
+  splChar=splChar+temp 'Else all character(Spl.Charaters will store)
+
+ End If
+
+Next
+
+msgbox strChar
+msgbox numeric
+msgbox splChar
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------  
+
+8. Write a program to create a Link type webobject object using descriptive programming using "Description.Create" vbscript method?
+
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+'Launch gmail
+
+systemutil.Run "iexplore.exe","http:\\www.gmail.com"
+
+-----------------------------------------------------------------------------
+
+'Descriptive object to identify  Browser  with a particular title
+
+Set  Dbrowser=description.Create
+Dbrowser("micclass").value="Browser"
+Dbrowser("title").value="Gmail: Email from Google"
+
+-----------------------------------------------------------------------------
+
+'Descriptive object to identify  Web page with a particular title
+
+Set  Dpage=description.Create
+Dpage("micclass").value="Page"
+Dpage("title").value="Gmail: Email from Google"
+
+-----------------------------------------------------------------------------
+
+'Descriptive object to identify a  particular Web Button
+
+Set  Dbutton=description.Create
+Dbutton("micclass").value="WebButton"
+Dbutton("name").value="Sign in"
+
+-----------------------------------------------------------------------------
+
+'Descriptive object to identify  Web Text Box
+
+Set Dedit=description.Create
+Dedit("micclass").value="WebEdit"
+Dedit("name").value="Email"
+
+-----------------------------------------------------------------------------
+
+'wait till browser loads
+
+Browser(Dbrowser).Page(Dpage).Sync
+
+-----------------------------------------------------------------------------
+
+‘Enter Email id in Username Field
+
+Browser(Dbrowser).Page(Dpage).WebEdit(Dedit).Set  "uft world"
+Dedit("name").value="Passwd"
+
+-----------------------------------------------------------------------------
+
+'Enter password in Password Field
+
+Browser(Dbrowser).Page(Dpage).WebEdit(Dedit).Set  "uft"
+
+-----------------------------------------------------------------------------
+
+
+'Cick on the Sign In Button
+Browser(Dbrowser).Page(Dpage).WebButton(Dbutton).Click
+
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+9. Write a program to enter some test data in an excel sheet created at runtime ?
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+
+Public Function SetExcelCellData(intRow, intCol,strValue)
+    Set objExcel = CreateObject("Excel.Application")
+    objExcel.DisplayAlerts = False
+    Set objWorkbook = objExcel.Workbooks.Open("E:\Path.xlsx")
+    Set objSheet  = objWorkbook.Worksheets("Sheet1") 
+    objSheet.Cells(intRow, intCol).value = strValue
+    objWorkbook.SaveAs "E:\Test\TestData.xlsx"
+    objWorkbook.Close
+    Set objSheet  = Nothing
+    Set objWorkbook = Nothing
+    Set objExcel = Nothing
+End Function
+
+Call SetExcelCellData(2,2,"TestValue")
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+10. Write a program to pick the account number only from string  " Hi !, Account number 23XXXXX9991 is credited with Rs. 23, 999.90 only " ?
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Dim s : s = Hi !, Account number 23XXXXX9991 is credited with Rs. 23, 999.90 only "
+
+Set re = New RegExp    'Create Regular expression object
+
+re.Pattern = "^\d+"    'Matches if a string starts with a digit
+
+Set matches = re.Execute(s)  'Collection
+
+If matches.Count <> 0 Then
+
+msgbox matches(0).Value    'Output the first value if it exists
+
+else
+
+msgbox "The input string " & s & " doesn't start with a digit"
+
+End If
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+11. Write 3 different functions to perfrom mathematical operations as Add of 3 numbers, Multiply of 4 digits, Divide of 2 digits only.
+Also implement the usage of these devloped functions ?
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+option explicit
+
+Const  SITE_TITLE = "mathematical operations" 
+
+Sub DisplayMsg(strMessage, intResult)
+   MsgBox strMessage & " : " & intResult,0,SITE_TITLE
+End Sub
+
+Function Add(inta, intb, intc)
+	Add = inta + intb + intc
+End Function
+
+Function Multiply(inta, intb)
+	Multiply = inta * intb
+End Function
+
+Function Divide(inta, intb)
+	Divide = inta / intb
+End Function
+
+
+Dim a, b, c, result, operation
+
+a = CInt(InputBox("Enter the first number : ")) 
+b = CInt(InputBox("Enter the second number : "))
+c = CInt(InputBox("Enter the third number : "))
+
+operation = InputBox("Enter: " & vbNewLine  & "     1 for Add " & vbNewLine  & "     2 for Multiply " & vbNewLine  & "     3 for Divide " & vbNewLine  & ") 
+
+Select Case operation
+  Case 1
+    result = Add(a, b, c)
+  Case 2
+    result = Multiply(a, b)
+  Case 3
+    result = Divide(a, b)
+  Case else
+    MsgBox "Your selection is not VALID!", 48, "ERROR"
+End Select
+
+If operation > 0 AND operation < 4 Then
+	DisplayMsg "The result is ", result
+End If
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+12. Write a function to concatenate 3 entered strings and usage of this developed function ?
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+Dim myString
+
+Public ConStr
+
+Call ConStr()
+
+Function ConStr()
+
+myString = "Hello there!"
+myString = myString & " My name"
+myString = myString & " is Rajeev"
+myString = myString & " Tiwari."
+document.write(myString)
+
+End Function
+
+Msgbox "Concatenate String" & mystring
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Demo Program:
+_____________________________________________________________________________________________________________________________________________________
+
+selectedItem=Browser("...:=...").Page("..:=..").WebList("..:=..").GetRoProperty("Propertyname") 
+
+// this will read all the values present in drop down, it can be seperated by ';'. You have to split it in array and then use that array to read all the values
+
+dim arrItem = split(selectedItem,";")
+
+dim Items
+
+for i=0 to ubound(arrItem)
+
+    Items= Browser("Browser").Page("Page").Frame("Frame").WebList("city").GetItem(i)
+
+    count = count+1
+
+Next
+
+msgbox count
+
+_________________________________________________________________________________________________________________________________________________________
