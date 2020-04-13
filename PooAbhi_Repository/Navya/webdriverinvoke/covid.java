@@ -14,7 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 
-public class udemy {
+public class covid {
 
 
 
