@@ -22,7 +22,7 @@ public class covid {
 
 		// TODO Auto-generated method stub
 
-		System.setProperty("webdriver.chrome.driver", "//Users//naveenkumar//Downloads//chromedriver_latest" );
+		System.setProperty("webdriver.chrome.driver", "//Users//admin//Downloads//chromedriver" );
 
 		WebDriver driver=new ChromeDriver();
 
