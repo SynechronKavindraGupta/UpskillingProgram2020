@@ -1,0 +1,163 @@
+Function Udemy
+
+Call Login( x, y)
+
+Browser("Browser").Page("Welcome: Udemy").WebList("Search for anything").Select "Java"
+    msgbox("result for Java displayed")
+
+
+Browser("Browser").Page("Find a Courses: Udemy").Image("ALL Filters").Click 36,8
+
+
+Call CheckBox()
+Call Cart (Prc1,Prc2)
+Call Checkout()
+
+End function 'added
+
+
+Public Function Login(strUserName, strPassword)
+
+Systemutil.Run "iexplore", "https://www.udemy.com/"
+
+Browser("title:=.*").Page("title:=.*").Sync
+
+DataTable.GlobalSheet.SetCurrentRow(i)
+strUserName=DataTable("UserName",dtGlobalSheet)
+strPassword=Datatable("PassWord",dtGlobalSheet)
+strname=Datatable("Name on card",dtGlobalSheet)
+strcrdnum=Datatable("Card number",dtGlobalSheet)
+strmon=Datatable("mm",dtGlobalSheet)
+stryear=Datatable("yyyy",dtGlobalSheet)
+strcvv=Datatable("Security code",dtGlobalSheet)
+
+Browser("Browser").Page("Welcome: Udemy").WebEdit("userName").Set strUserName
+
+Browser("Browser").Page("Welcome: Udemy").WebEdit("password").SetSecure strPassword
+
+Browser("Browser").Page("Welcome: Udemy").Image("Sign-In").Click
+
+wait(10)
+
+ 
+If left(browser("title:=.*").Page("title:=.*").getROProperty("title"),13) ="Udemy
+       Reporter.ReportEvent micPass,"Verify Login","Signed in Successfully"
+else
+
+Else
+   Reporter.ReportEvent micFail,"Verify Login","Login Unsuccessful"
+
+End If
+End Function
+
+
+Function CheckBox()
+
+Set oBrowser=Description.Create()
+oBrowser("Udemy").value="Browser"
+
+set oPage=Description.Create()
+oPage("JCourses").Value="Page"
+
+set oCB=Description.Create()
+oLink("Jlink").Value="WebCheckBox"
+
+set cboxes=Browser(oBrowser).Page(oPage).childobjects(oCB)
+msgbox cboxes.count
+
+
+Browser("Browser").Page("Find a Courses: Udemy").WebCheckBox("Android Development").set "ON"
+        Reporter.ReportEvent micPass,"Verify Checkbox","Android Development checked"
+
+Browser("Browser").Page("Find a Courses: Udemy").WebCheckBox("Beginner").set "ON"
+        Reporter.ReportEvent micPass,"Verify Checkbox","Beginner checked"
+
+
+Browser("Browser").Page("Find a Courses: Udemy").WebCheckBox("English").set "ON"
+        Reporter.ReportEvent micPass,"Verify Checkbox","English checked"
+
+Browser("Browser").Page("Find a Courses: Udemy").Image("Apply").Click 40,5
+
+
+End Function
+
+
+
+Function Cart(Prc1,Prc2)
+
+Browser("Browser").Page("Find a Courses: Udemy").WebTable("html id:=gridTable").ChildItem(2,8,"Link",0).click
+        Reporter.ReportEvent micPass,"Verify Course Details","Course details and price"
+
+Prc1 = Browser("Browser").Page("Find a Courses: Udemy").webedit(ctl00$ConBody$txtPDNumber).getroproperty("value")
+
+Browser("Browser").Page("Courses: java-the-easy-way").Image("Add to Cart").Click
+       msgbox("Cart Prompt screen display)
+
+Browser("Browser").Page("Courses: java-the-easy-way").Link("Go to Cart").Click
+
+Browser("Browser").Page("Cart: Course in Cart").GetROproperty("innerhtml")
+       msgbox("Udemy screen display")
+
+Browser("Browser").Page("Cart: Course in Cart").GetROproperty("outerhtml")
+       msgbox("Shopping Cart screen display")
+
+
+Prc2 = Browser("Browser").Page("Cart: Course in Cart").webedit(ctl00$ConBody$txtPDNumber).getroproperty("value")
+
+If Prc1 = Prc2 Then
+
+    msgbox (“The price are same.”)
+
+Else
+
+    msgbox (“The price are not same.”)
+
+End If
+
+
+Browser("Browser").Page("Cart: Course in Cart").Image("Checkout").Click 
+       msgbox("screen navigated to Checkout screen")
+
+End Function
+
+
+
+Function Checkout()
+
+
+Browser("Browser").Page("Checkout").getROProperty("title"),13) ="Checkout"
+
+Set desc=description.Create()
+desc("payment").value="WebRadioGroup"
+Set radio=Browser("Browser").Page("Checkout").ChildObjects(desc)
+radiocount=radio.count
+msgbox radiocount
+
+For i=o to radiocount-1
+
+itemcount=radio.item(i).GetRoProperty("items count")
+msgbox "item count:" & itemcount
+
+Next
+
+variable=RandomNumber(0,(itemcount-1))
+randselection="#" & variable
+
+
+Browser("Browser").Page("Checkout").WebEdit("Name on card").SetSecure strName
+
+Browser("Browser").Page("Checkout").WebEdit("Card number").SetSecure strcrdnum
+
+Browser("Browser").Page("Checkout").WebEdit("Name on card").SetSecure strName
+
+Browser("Browser").Page("Checkout").WebEdit("mm").SetSecure strmon
+
+Browser("Browser").Page("Checkout").WebEdit("yyyy").SetSecure stryear
+
+Browser("Browser").Page("Checkout").WebEdit("Security code").SetSecure strcvv
+
+Browser("Browser").Page("Checkout").Image("Complete Payment").Click
+       Reporter.ReportEvent micPass,"Verify Payment","Payment is completed"
+
+End Function
+

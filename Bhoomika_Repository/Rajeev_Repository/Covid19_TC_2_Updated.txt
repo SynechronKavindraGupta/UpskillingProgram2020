@@ -1,0 +1,35 @@
+Function Covid()
+
+Systemutil.Run "iexplore", "https://www.covid19india.org/"
+
+confirmedCases = Browser("Browser").Page("Covid").WebElement("Confirmed","index:=0").GetRoProperty("text")
+
+ActiveCases = Browser("Browser").Page("Covid").WebElement("Active","index:=0").GetRoProperty("text")
+
+
+RecoveredCases = Browser("Browser").Page("Covid").WebElement("Recovered","index:=0").GetRoProperty("text")
+
+
+DeceasedCases = Browser("Browser").Page("Covid").WebElement("Deceased","index:=0").GetRoProperty("text")
+
+
+If Browser("Browser").Page("Covid").WebTable("status Report").Exist Then
+	rcnt =  Browser("Browser").Page("Covid").WebTable("status Report").rowCount
+	for i=0 to rcnt-1
+	 state = Browser("Browser").Page("Covid").WebTable("status Report").getCellData(i,1)
+	stateCount = Browser("Browser").Page("Covid").WebTable("status Report").getCellData(i,2)
+	dim totalCnt
+	totalCnt = totalCnt + (cInt(stateCount))
+	dim array()
+	redim Preserve array(state,stateCount)
+	reporter.report micPass,"Data is Added", "data is"&state &" " &stateCount
+	next
+	Reporter.Report micpass,"webtable count","count is"+totalCnt
+else
+	Reporter.Report micfail,"Webtable does not Exist","Webtable not exist"
+
+end IF
+
+
+
+End Function
