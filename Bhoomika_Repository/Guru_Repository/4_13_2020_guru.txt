@@ -1,0 +1,42 @@
+sTestCaseName = Environment.Value("TestName")
+ 
+sUrl = fnGetDataFromExcel("URL")
+SystemUtil.Run "iexplore.exe", sUrl
+
+Browser("Browser").Page("Udemy").Sync
+ 
+Browser("Browser").Page("Udemy").WebButton("Log in").Click
+Browser("Browser").Page("Udemy").WebEdit("UserName").Set DataTable("Username", datasheet)
+Browser("Browser").Page("Udemy").WebEdit("Password").SetSecure DataTable("Password", datasheet)
+Browser("Browser"").Page("Udemy").WebButton("LogIn").Click
+
+wait(4)
+
+Browser("Browser").Page("Udemy").WebEdit("search").fnSetValue "search"
+WshShell.SendKeys("ENTER")
+
+wait(3)
+Browser("Browser").Page("Udemy").WebButton("Allfilter").Click
+Browser("Browser").Page("Udemy").WebTable("Topic").ChildItem(row, 1, "WebCheckbox", 1).set "ON"
+Browser("Browser").Page("Udemy").WebTable("Level").ChildItem(row, 2, "WebCheckbox", 2).set "ON"
+Browser("Browser"").Page("Udemy").WebButton("Apply").Click
+
+wait(4)
+Browser("Browser").Page("Udemy").Frame("Learn java").Link(">>").Click
+Browser("Browser"").Page("Udemy").WebButton("Add to cart").Click
+
+Set WshShell = CreateObject(“WScript.Shell”)
+If  Browser(“name:=Browser”).WinButton(“micclass:=WinButton”,“text:=Add to cart”).
+Exist(5)   Then
+Browser(“name:=Browser”).WinButton(“micclass:=WinButton”,“text:=Add to cart”).click
+End if
+
+Browser("Browser"").Page("Udemy").WebButton("Go to cart").Click
+Browser("Browser"").Page("Udemy").WebButton("Checkout").Click
+
+Browser("Browser").Page("payment").WebEdit("Name on card").Set DataTable("Nameoncard", datasheet)
+Browser("Browser").Page("payment").WebEdit("Card Number").Set DataTable("cardnumber", datasheet)
+Browser("Browser").Page("payment").WebEdit("Expiry date").Set DataTable("expirydate", datasheet)
+Browser("Browser").Page("payment").WebEdit("Security code").Set DataTable("securtycode", datasheet)
+Browser("Browser"").Page("payment").WebButton("Complete payment").Click
+wait(10)
